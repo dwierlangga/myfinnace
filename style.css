@@ -1,0 +1,85 @@
+:root {
+    --primary: #4361ee;
+    --success: #2ec4b6;
+    --danger: #e71d36;
+    --dark: #011627;
+    --light: #f8f9fa;
+    --grad: linear-gradient(135deg, #4361ee, #4cc9f0);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f4f8;
+    margin: 0; padding: 20px;
+    color: var(--dark);
+}
+
+.container { max-width: 1100px; margin: auto; }
+
+header { text-align: center; margin-bottom: 25px; }
+header h1 { color: var(--primary); margin: 0; font-weight: 700; }
+header h1 span { color: var(--dark); }
+header p { color: #666; font-size: 14px; }
+
+/* Dashboard Saldo */
+.balance-card {
+    background: var(--grad);
+    color: white;
+    padding: 35px 20px;
+    border-radius: 20px;
+    text-align: center;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 20px rgba(67, 97, 238, 0.2);
+}
+.balance-card p { margin: 0; font-size: 14px; opacity: 0.9; text-transform: uppercase; letter-spacing: 1px; }
+.balance-card h2 { margin: 10px 0 0 0; font-size: 2.8rem; font-weight: 700; }
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+/* Form Styles */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 15px;
+    align-items: end;
+}
+.input-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; color: #555; }
+input, select {
+    width: 100%; padding: 12px;
+    border: 1px solid #ddd; border-radius: 10px;
+    font-size: 14px; outline: none; transition: 0.3s;
+}
+input:focus { border-color: var(--primary); }
+
+button {
+    background: var(--primary); color: white;
+    border: none; padding: 12px 30px; border-radius: 10px;
+    font-weight: 600; cursor: pointer; transition: 0.3s;
+}
+button:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3); }
+
+/* Table Styles */
+.table-container { overflow-x: auto; margin-top: 10px; }
+table { width: 100%; border-collapse: collapse; min-width: 900px; }
+th { text-align: left; padding: 15px; border-bottom: 2px solid #f0f0f0; color: #888; font-size: 13px; text-transform: uppercase; }
+td { padding: 15px; border-bottom: 1px solid #f9f9f9; font-size: 14px; }
+
+.pemasukan { color: var(--success); font-weight: 700; }
+.pengeluaran { color: var(--danger); font-weight: 700; }
+.saldo-val { font-weight: 700; background: #f0f3ff; padding: 6px 12px; border-radius: 8px; color: var(--primary); }
+
+.btn-hapus { background: #fee2e2; color: var(--danger); padding: 8px 15px; font-size: 12px; border-radius: 6px; }
+.btn-hapus:hover { background: var(--danger); color: white; }
+
+/* Responsive */
+@media (max-width: 900px) { .form-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { 
+    .form-grid { grid-template-columns: 1fr; } 
+    .balance-card h2 { font-size: 2rem; }
+}

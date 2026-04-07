@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyFinance Digital - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>EK <span>FINANCE</span></h1>
+        <p>Keuangan Erlangga dan Kareviana</p>
+    </header>
+
+    <div class="balance-card">
+        <p>Total Saldo Saat Ini</p>
+        <h2 id="totalSaldoAtas">Rp 0</h2>
+    </div>
+
+    <div class="card card-form">
+        <h3>Tambah Transaksi</h3>
+        <div class="form-grid">
+            <div class="input-group">
+                <label>Keterangan</label>
+                <input type="text" id="ket" placeholder="Contoh: Gaji, Jajan Bakso">
+            </div>
+            <div class="input-group">
+                <label>Kategori</label>
+                <select id="kat">
+                    <option value="Pengeluaran">Pengeluaran (-)</option>
+                    <option value="Pemasukan">Pemasukan (+)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Nominal (Rp)</label>
+                <input type="number" id="nom" placeholder="Masukkan angka saja">
+            </div>
+            <button onclick="simpanKeScript()" id="btnSimpan">Simpan</button>
+        </div>
+    </div>
+
+    <div class="card card-table">
+        <h3>Riwayat Transaksi</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Tanggal</th>
+                        <th>Waktu</th>
+                        <th>Keterangan</th>
+                        <th>Masuk</th>
+                        <th>Keluar</th>
+                        <th>Saldo Akhir</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="isiTabel">
+                    <tr><td colspan="8" class="loading">Menghubungkan ke database...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

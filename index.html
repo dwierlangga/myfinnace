@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyFinance Digital - Dashboard</title>
+    <title>MyFinance Digital</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -11,8 +11,7 @@
 
 <div class="container">
     <header>
-        <h1>EK <span>FINANCE</span></h1>
-        <p>Keuangan Erlangga dan Kareviana</p>
+        <h1>MyFinance <span>Digital</span></h1>
     </header>
 
     <div class="balance-card">
@@ -21,11 +20,11 @@
     </div>
 
     <div class="card card-form">
-        <h3>Tambah Transaksi</h3>
+        <h3 id="formTitle">Tambah Transaksi</h3>
         <div class="form-grid">
             <div class="input-group">
                 <label>Keterangan</label>
-                <input type="text" id="ket" placeholder="Contoh: Gaji, Jajan Bakso">
+                <input type="text" id="ket" placeholder="Contoh: Gaji">
             </div>
             <div class="input-group">
                 <label>Kategori</label>
@@ -36,9 +35,12 @@
             </div>
             <div class="input-group">
                 <label>Nominal (Rp)</label>
-                <input type="number" id="nom" placeholder="Masukkan angka saja">
+                <input type="number" id="nom" placeholder="Angka saja">
             </div>
-            <button onclick="simpanKeScript()" id="btnSimpan">Simpan</button>
+            <div class="btn-group">
+                <button onclick="simpanKeScript()" id="btnSimpan">Simpan</button>
+                <button onclick="resetForm()" id="btnBatal" style="display:none; background:#6c757d">Batal</button>
+            </div>
         </div>
     </div>
 
@@ -54,12 +56,12 @@
                         <th>Keterangan</th>
                         <th>Masuk</th>
                         <th>Keluar</th>
-                        <th>Saldo Akhir</th>
+                        <th>Saldo</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody id="isiTabel">
-                    <tr><td colspan="8" class="loading">Menghubungkan ke database...</td></tr>
+                    <tr><td colspan="8" style="text-align:center">Memuat data...</td></tr>
                 </tbody>
             </table>
         </div>

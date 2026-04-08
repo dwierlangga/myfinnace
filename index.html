@@ -3,71 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyFinance Digital</title>
+    <title>Keuangan Kita - Erlangga Kareviana</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <h1>EK <span>FINANCE</span></h1>
-    </header>
-
-    <div class="balance-card">
-        <p>Total Saldo Saat Ini</p>
-        <h2 id="totalSaldoAtas">Rp 0</h2>
+    <div id="loadingOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(255,255,255,0.8); z-index:9999; flex-direction:column; align-items:center; justify-content:center;">
+        <div class="loader"></div>
+        <p style="margin-top:15px; font-weight:600; color:#4361ee">Sinkronisasi Data...</p>
     </div>
 
-    <div class="card card-form">
-        <h3 id="formTitle">Tambah Transaksi</h3>
-        <div class="form-grid">
-            <div class="input-group">
-                <label>Keterangan</label>
-                <input type="text" id="ket" placeholder="Contoh: Gaji">
+    <div class="container">
+        <header>
+            <h1>Keuangan <span>Kita</span></h1>
+            <p class="subtitle">Keuangan keluarga kecil Erlangga Kareviana</p>
+        </header>
+
+        <div class="balance-card">
+            <p>Total Saldo Saat Ini</p>
+            <h2 id="totalSaldoAtas">Rp 0</h2>
+        </div>
+
+        <div class="card card-form">
+            <h3 id="formTitle">Tambah Transaksi</h3>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label>Keterangan</label>
+                    <input type="text" id="ket" placeholder="Contoh: Belanja Bulanan">
+                </div>
+                <div class="input-group">
+                    <label>Kategori</label>
+                    <select id="kat">
+                        <option value="Pengeluaran">Pengeluaran (-)</option>
+                        <option value="Pemasukan">Pemasukan (+)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Nominal (Rp)</label>
+                    <input type="number" id="nom" placeholder="Masukkan angka">
+                </div>
+                <div class="btn-group">
+                    <button onclick="simpanKeScript()" id="btnSimpan">Simpan</button>
+                    <button onclick="resetForm()" id="btnBatal" style="display:none; background:#6c757d">Batal</button>
+                </div>
             </div>
-            <div class="input-group">
-                <label>Kategori</label>
-                <select id="kat">
-                    <option value="Pengeluaran">Pengeluaran (-)</option>
-                    <option value="Pemasukan">Pemasukan (+)</option>
-                </select>
+        </div>
+
+        <div class="card card-table">
+            <div class="table-header">
+                <h3>Riwayat Transaksi (Mutasi)</h3>
+                <div class="filter-mutasi">
+                    <div class="f-item">
+                        <label>Dari:</label>
+                        <input type="date" id="tglMulai" onchange="muatData()">
+                    </div>
+                    <div class="f-item">
+                        <label>Sampai:</label>
+                        <input type="date" id="tglSelesai" onchange="muatData()">
+                    </div>
+                    <button class="btn-reset" onclick="resetFilterTanggal()">Reset</button>
+                </div>
             </div>
-            <div class="input-group">
-                <label>Nominal (Rp)</label>
-                <input type="number" id="nom" placeholder="Angka saja">
-            </div>
-            <div class="btn-group">
-                <button onclick="simpanKeScript()" id="btnSimpan">Simpan</button>
-                <button onclick="resetForm()" id="btnBatal" style="display:none; background:#6c757d">Batal</button>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Hari</th>
+                            <th>Tanggal</th>
+                            <th>Waktu</th>
+                            <th>Keterangan</th>
+                            <th>Masuk</th>
+                            <th>Keluar</th>
+                            <th>Saldo</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="isiTabel">
+                        <tr><td colspan="9" style="text-align:center">Menghubungkan ke database...</td></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 
-    <div class="card card-table">
-        <h3>Riwayat Transaksi</h3>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Tanggal</th>
-                        <th>Waktu</th>
-                        <th>Keterangan</th>
-                        <th>Masuk</th>
-                        <th>Keluar</th>
-                        <th>Saldo</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody id="isiTabel">
-                    <tr><td colspan="8" style="text-align:center">Memuat data...</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
